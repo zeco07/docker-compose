@@ -28,18 +28,18 @@ services:
       --db-url sqlite:////freqtrade/user_data/dbs/rsi.sqlite
       --config /freqtrade/user_data/con_rsi.json
       --strategy BbandRsi
-  ElliotV5_SMA:
+  E0V1E_45:
     image: freqtradeorg/freqtrade:stable
     restart: unless-stopped
-    container_name: ElliotV5_SMA
+    container_name: E0V1E_45
     volumes:
       - "./user_data:/freqtrade/user_data"
     ports:
       - "127.0.0.1:8082:8080"
     command: >
       trade
-      --logfile /freqtrade/user_data/logs/sma.log
-      --db-url sqlite:////freqtrade/user_data/dbs/sma.sqlite
-      --config /freqtrade/user_data/con_sma.json
-      --strategy ElliotV5_SMA
+      --logfile /freqtrade/user_data/logs/E0V1E_45.log
+      --db-url sqlite:////freqtrade/user_data/dbs/E0V1E_45.sqlite
+      --config /freqtrade/user_data/E0V1E_45.json
+      --strategy E0V1E_45
     
