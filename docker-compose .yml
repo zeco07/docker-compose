@@ -1,0 +1,45 @@
+---
+services:
+  EMA_rsi30:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: freqtrade
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    ports:
+      - "127.0.0.1:8080:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/ema.log
+      --db-url sqlite:////freqtrade/user_data/dbs/ema.sqlite
+      --config /freqtrade/user_data/con_ema.json
+      --strategy EMA_rsi30
+  BbandRsi:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: BbandRsi
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    ports:
+      - "127.0.0.1:8081:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/rsi.log
+      --db-url sqlite:////freqtrade/user_data/dbs/rsi.sqlite
+      --config /freqtrade/user_data/con_rsi.json
+      --strategy BbandRsi
+  ElliotV5_SMA:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: ElliotV5_SMA
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    ports:
+      - "127.0.0.1:8082:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/sma.log
+      --db-url sqlite:////freqtrade/user_data/dbs/sma.sqlite
+      --config /freqtrade/user_data/con_sma.json
+      --strategy ElliotV5_SMA
+    
